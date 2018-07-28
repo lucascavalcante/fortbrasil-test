@@ -9,10 +9,14 @@ use FortBrasil\BaseModule\Controller\BaseController;
 $app = new Silex\Application();
 $app->register(new Silex\Provider\ValidatorServiceProvider());
 
+// exception treatment
 $app->error(function (\Exception $e, Request $request, $code) {
     return BaseController::managingRoutes($request, [$code => $e->getMessage()]);
 });
 
+// ALL ROUTES
+
+// default route
 $app->get('/', function(Request $request) use ($app) {
     return BaseController::managingRoutes($request, ['App' => 'FortBrasil Test', 'Version' => '0.0.1']);
 });
