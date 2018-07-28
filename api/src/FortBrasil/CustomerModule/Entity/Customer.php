@@ -2,6 +2,8 @@
 namespace FortBrasil\CustomerModule\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * Class Customer
@@ -16,32 +18,39 @@ class Customer
      * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(name="first_name", type="string", length=255, nullable=false)
      */
-    private $firstName;
+    public $firstName;
 
     /**
      * @ORM\Column(name="last_name", type="string", length=255, nullable=false)
      */
-    private $lastName;
+    public $lastName;
 
     /**
      * @ORM\Column(name="cpf", type="string", length=11, nullable=false)
      */
-    private $cpf;
+    public $cpf;
 
     /**
      * @ORM\Column(name="birthday", type="date", nullable=true)
      */
-    private $birthday;
+    public $birthday;
 
     /**
      * @ORM\Column(name="genre", type="string", length=1, nullable=true)
      */
-    private $genre;
+    public $genre;
+
+    static public function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('firstName', new Assert\NotBlank());
+        $metadata->addPropertyConstraint('lastName', new Assert\NotBlank());
+        $metadata->addPropertyConstraint('cpf', new Assert\NotBlank());
+    }
 
     /**
      * @return mixed

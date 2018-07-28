@@ -49,15 +49,18 @@ abstract class BaseRepository
     {
         $this->entityManager->persist($obj);
         $this->entityManager->flush();
+        return $obj;
     }
     public function update($obj)
     {
         $this->entityManager->merge($obj);
         $this->entityManager->flush();
+        return $obj;
     }
     public function delete($obj)
     {
         $this->entityManager->remove($obj);
         $this->entityManager->flush();
+        return 'Removed successfully';
     }
 }

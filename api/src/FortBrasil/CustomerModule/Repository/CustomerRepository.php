@@ -11,29 +11,12 @@ class CustomerRepository extends BaseRepository
         parent::__construct('FortBrasil\CustomerModule\Entity', '\Customer');
     }
 
-    public function findAll()
-    {
-        return parent::findAll();
+    public function findByCpf($cpf) {
+        return $this->entityManager->getRepository($this->entityPath)->findOneBy(['cpf' => $cpf]);
     }
 
-    public function findById($id)
-    {
-        return parent::findById($id);
-    }
-
-    public function insert($obj)
-    {
-        parent::insert($obj);
-    }
-
-    public function update($obj)
-    {
-        parent::update($obj);
-    }
-
-    public function delete($obj)
-    {
-        parent::delete($obj);
+    public function findByIdAndCpf($id, $cpf) {
+        return $this->entityManager->getRepository($this->entityPath)->findOneBy(['id' => $id, 'cpf' => $cpf]);
     }
 
 }

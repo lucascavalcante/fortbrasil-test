@@ -9,8 +9,9 @@ use FortBrasil\CustomerModule\Service\CustomerService;
 
 class CustomerController implements BaseInterface
 {
-    public static function managingRoutes(Request $request)
+    public static function managingRoutes(Request $request, $app = null)
     {
+
         $service = new CustomerService();
         $response = null;
 
@@ -20,15 +21,16 @@ class CustomerController implements BaseInterface
                 $response = $id ? $service->getCustomer($id) : $service->getAllCustomers();
                 break;
             case 'POST':
-                $response = $service->addCustomer($request);
+                $response = $service->addCustomer($request, $app);
                 break;
             case 'PUT':
-                $response = $service->editCustomer($request);
+                $response = $service->editCustomer($request, $app);
                 break;
             case 'DELETE':
                 $response = $service->deleteCustomer($request);
                 break;
         }
+
         return new JsonResponse($response);
     }
 }

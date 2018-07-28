@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use FortBrasil\CustomerModule\Controller\CustomerController;
 
 $app = new Silex\Application();
+$app->register(new Silex\Provider\ValidatorServiceProvider());
 
 $app->error(function (\Exception $e, Request $request, $code) {
     return new JsonResponse([$code => $e->getMessage()]);
@@ -30,13 +31,13 @@ $app->get('/customer/{id}', function (Request $request){
 });
 
 // save new customer
-$app->post('/customer', function (Request $request){
-    return CustomerController::managingRoutes($request);
+$app->post('/customer', function (Request $request) use ($app) {
+    return CustomerController::managingRoutes($request, $app);
 });
 
 // edit a specific customer
-$app->put('/customer/{id}', function (Request $request){
-    return CustomerController::managingRoutes($request);
+$app->put('/customer/{id}', function (Request $request) use ($app) {
+    return CustomerController::managingRoutes($request, $app);
 });
 
 // delete a specific customer
