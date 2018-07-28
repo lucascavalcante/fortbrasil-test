@@ -34,7 +34,7 @@ class Customer
     private $cpf;
 
     /**
-     * @ORM\Column(name="birthday", type="datetime", nullable=true)
+     * @ORM\Column(name="birthday", type="date", nullable=true)
      */
     private $birthday;
 
