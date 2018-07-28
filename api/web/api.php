@@ -3,21 +3,18 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use FortBrasil\CustomerModule\Controller\CustomerController;
+use FortBrasil\BaseModule\Controller\BaseController;
 
 $app = new Silex\Application();
 $app->register(new Silex\Provider\ValidatorServiceProvider());
 
 $app->error(function (\Exception $e, Request $request, $code) {
-    return new JsonResponse([$code => $e->getMessage()]);
+    return BaseController::managingRoutes($request, [$code => $e->getMessage()]);
 });
 
-$app->get('/', function() use ($app) {
-    return new JsonResponse([
-        'App' => 'FortBrasil Test',
-        'Version' => '0.0.1'
-    ]);
+$app->get('/', function(Request $request) use ($app) {
+    return BaseController::managingRoutes($request, ['App' => 'FortBrasil Test', 'Version' => '0.0.1']);
 });
 
 // return all customers

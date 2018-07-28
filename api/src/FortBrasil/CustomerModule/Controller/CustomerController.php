@@ -11,7 +11,6 @@ class CustomerController implements BaseInterface
 {
     public static function managingRoutes(Request $request, $app = null)
     {
-
         $service = new CustomerService();
         $response = null;
 
