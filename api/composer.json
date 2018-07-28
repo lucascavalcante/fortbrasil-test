@@ -1,0 +1,17 @@
+{
+  "name": "FortBrasil API",
+  "description": "This project be part of the test of FortBrasil company",
+  "require": {
+    "silex/silex": "^2.0",
+    "doctrine/orm": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7"
+  },
+  "autoload": {
+    "psr-4": {
+      "FortBrasil\\": "src/FortBrasil",
+      "FortBrasil\\Tests\\": "tests"
+    }
+  }
+}
