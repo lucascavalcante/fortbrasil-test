@@ -1,19 +1,27 @@
+import Vue from 'vue'
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = 'http://127.0.0.1:8000/';
 
-export class APIService {
-    constructor() {
-
-    }
-
+export default {
     getCustomers() {
-        const url = 'http://127.0.0.1:8000/customer';
-        return axios.get(url).then(response => response.data)
-    }
-
-    getCustomer() {
-        const url = '${API_URL}/customer/${id}';
-        return axios.get(url).then(response => response.data)
+        let url =  API_URL + 'customer';
+        return axios.get(url).then(response => response.data);
+    },
+    getCustomer(id) {
+        let url = API_URL + 'customer/' + id;
+        return axios.get(url).then(response => response.data);
+    },
+    addCustomer(customer) {
+        let url =  API_URL + 'customer';
+        return axios.post(url, customer);
+    },
+    editCustomer(customer) {
+        let url =  API_URL + 'customer/' + customer.id;
+        return axios.put(url, customer);
+    },
+    deleteCustomer(id) {
+        let url =  API_URL + 'customer/' + id;
+        return axios.delete(url);
     }
 }
