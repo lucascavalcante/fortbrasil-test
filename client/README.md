@@ -1,21 +1,23 @@
 # fort-brasil-client
 
-> A test from FortBrasil company
+> Developed with Vue.js + Bootstrap
 
 ## Build Setup
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+Enter in `Client` folder.
+```
+cd client/
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Install all dependencies.
+```
+npm install
+```
+
+Run the server.
+```
+# serve with hot reload at 127.0.0.1:8080
+npm run dev
+```
+
+Enjoy it! :)
