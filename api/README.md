@@ -1,9 +1,11 @@
 # fortbrasil-test
-This project be part of the test of FortBrasil company
 
+> Developed with PHP 7 + Silex Microframework + MySQL
+
+## Build Setup
 Enter in `API` folder.
 ```
-cd /api
+cd api/
 ```
 
 Install all dependencies.
