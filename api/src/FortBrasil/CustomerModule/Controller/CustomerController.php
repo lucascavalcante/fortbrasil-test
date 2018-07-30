@@ -20,13 +20,17 @@ class CustomerController implements BaseInterface
                 $response = $id ? $service->getCustomer($id) : $service->getAllCustomers();
                 break;
             case 'POST':
-                $response = $service->addCustomer($request, $app);
+                $method = $request->request->get('_method');
+                $response = $method === 'PUT' ? $service->editCustomer($request, $app) : $service->addCustomer($request, $app);
                 break;
             case 'PUT':
                 $response = $service->editCustomer($request, $app);
                 break;
             case 'DELETE':
                 $response = $service->deleteCustomer($request);
+                break;
+            case 'OPTIONS':
+                $response = $service->addCustomer($request, $app);
                 break;
         }
 

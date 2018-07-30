@@ -29,13 +29,15 @@ class CustomerService
 
     public function addCustomer($request, $app) {
         $customer = new Customer();
-        $customer->setFirstName($request->request->get('first_name'));
-        $customer->setLastName($request->request->get('last_name'));
+        $customer->setFirstName($request->request->get('firstName'));
+        $customer->setLastName($request->request->get('lastName'));
         $customer->setCpf($request->request->get('cpf'));
 
         $birthday = $request->request->get('birthday', null);
-        if($birthday !== null)
+        if($birthday != 'null')
             $birthday = new \DateTime($birthday, new \DateTimeZone('America/Fortaleza'));
+        else
+            $birthday = null;
 
         $customer->setBirthday($birthday);
         $customer->setGenre($request->request->get('genre'));
@@ -54,13 +56,16 @@ class CustomerService
             return Util::return(404, 'Customer not found');
         }
 
-        $customer->setFirstName($request->request->get('first_name'));
-        $customer->setLastName($request->request->get('last_name'));
+        $customer->setFirstName($request->request->get('firstName'));
+        $customer->setLastName($request->request->get('lastName'));
         $customer->setCpf($request->request->get('cpf'));
 
         $birthday = $request->request->get('birthday', null);
-        if($birthday !== null)
+        if($birthday != 'null')
             $birthday = new \DateTime($birthday, new \DateTimeZone('America/Fortaleza'));
+        else
+            $birthday = null;
+
 
         $customer->setBirthday($birthday);
         $customer->setGenre($request->request->get('genre', null));

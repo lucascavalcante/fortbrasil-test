@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Methods: POST, GET, PUT, DELETE, OPTIONS");
 
 use Symfony\Component\HttpFoundation\Request;
 use FortBrasil\CustomerModule\Controller\CustomerController;
@@ -22,29 +24,13 @@ $app->get('/', function(Request $request) use ($app) {
     return BaseController::managingRoutes($request, ['App' => 'FortBrasil Test', 'Version' => '0.0.1']);
 });
 
-// return all customers
-$app->get('/customer', function (Request $request){
-    return CustomerController::managingRoutes($request);
-});
-
-// return a specific customer
-$app->get('/customer/{id}', function (Request $request){
-    return CustomerController::managingRoutes($request);
-});
-
-// save new customer
-$app->post('/customer', function (Request $request) use ($app) {
+$app->match('/customer', function (Request $request) use ($app) {
     return CustomerController::managingRoutes($request, $app);
 });
 
-// edit a specific customer
-$app->put('/customer/{id}', function (Request $request) use ($app) {
+$app->match('/customer/{id}', function (Request $request) use ($app) {
+    //return new \Symfony\Component\HttpFoundation\JsonResponse($request->request->get('_method'));
     return CustomerController::managingRoutes($request, $app);
-});
-
-// delete a specific customer
-$app->delete('/customer/{id}', function (Request $request){
-    return CustomerController::managingRoutes($request);
 });
 
 $app->run();
