@@ -1,4 +1,4 @@
-# fortbrasil-test
+# FortBrasil API
 
 > Developed with PHP 7 + Silex Microframework + MySQL
 
