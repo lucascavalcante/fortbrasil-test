@@ -127,7 +127,9 @@
                 }
             },
             formatDate(date) {
-                return date.getDate() +'/'+(date.getMonth()+1)+'/'+date.getFullYear();
+                let day = date.getDate() < 10 ? ("0" + date.getDate()).slice(-2) : date.getDate();
+                let month = (date.getMonth() + 1) < 10 ? ("0" + (date.getMonth() + 1)).slice(-2) : date.getMonth();
+                return day +'/'+(month)+'/'+date.getFullYear();
             }
         },
 //        mounted() {
