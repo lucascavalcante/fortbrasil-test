@@ -1,6 +1,6 @@
 # FortBrasil API
 
-> Developed with PHP 7 + Silex Microframework + MySQL
+> Developed with PHP 7 + Silex Microframework + Doctrine + MySQL
 
 ## Build Setup
 Enter in `API` folder.
