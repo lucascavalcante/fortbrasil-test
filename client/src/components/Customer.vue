@@ -36,19 +36,19 @@
                 <b-card :title="(model.id ? 'Edit Customer ID#' + model.id : 'New Customer')">
                     <form @submit.prevent="saveCustomer">
                         <b-form-group label="First Name">
-                            <b-form-input type="text" v-model="model.firstName"></b-form-input>
+                            <b-form-input type="text" v-model="model.firstName" required></b-form-input>
                         </b-form-group>
                         <b-form-group label="Last Name">
-                            <b-form-input type="text" v-model="model.lastName"></b-form-input>
+                            <b-form-input type="text" v-model="model.lastName" required></b-form-input>
                         </b-form-group>
                         <b-form-group label="CPF">
-                            <b-form-input type="text" v-model="model.cpf"></b-form-input>
+                            <b-form-input type="text" v-model="model.cpf" v-mask="'XXX.XXX.XXX-XX'" required></b-form-input>
                         </b-form-group>
                         <b-form-group label="Birthday">
-                            <b-form-input type="text" v-model="model.birthday"></b-form-input>
+                            <b-form-input type="text" v-model="model.birthday" v-mask="'XX/XX/XXXX'" required></b-form-input>
                         </b-form-group>
                         <b-form-group label="Genre">
-                            <b-form-select v-model="model.genre">
+                            <b-form-select v-model="model.genre" required>
                                 <option value="M">Male</option>
                                 <option value="F">Female</option>
                             </b-form-select>
@@ -65,8 +65,10 @@
 
 <script>
     import api from '@/APIService';
+    import {mask} from 'vue-the-mask'
 
     export default {
+        directives: {mask},
         name: 'Customer',
         components: {},
         data() {

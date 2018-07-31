@@ -12,8 +12,8 @@ export default {
         let data2 = new FormData();
         data2.append('firstName', data.firstName);
         data2.append('lastName', data.lastName);
-        data2.append('cpf', data.cpf);
-        data2.append('birthday', (data.birthday != null) ? data.birthday.split('/').reverse().join('-') : null);
+        data2.append('cpf', data.cpf.split(/[\.-]/g).join(''));
+        data2.append('birthday', data.birthday.split('/').reverse().join('-'));
         data2.append('genre', data.genre);
         return axios.post(url, data2).then(response => console.log(response.data)).catch(error => console.log(error));
     },
@@ -22,8 +22,8 @@ export default {
         let data2 = new FormData();
         data2.append('firstName', data.firstName);
         data2.append('lastName', data.lastName);
-        data2.append('cpf', data.cpf);
-        data2.append('birthday', (data.birthday != '' || data.birthday != null) ? data.birthday.split('/').reverse().join('-') : null);
+        data2.append('cpf', data.cpf.split(/[\.-]/g).join(''));
+        data2.append('birthday', data.birthday.split('/').reverse().join('-'));
         data2.append('genre', data.genre);
         data2.append('_method', 'PUT');
         return axios.post(url, data2).then(response => console.log(response.data)).catch(error => console.log(error));
